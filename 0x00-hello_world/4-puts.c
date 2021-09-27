@@ -1,6 +1,8 @@
 #include <stdio.h>
 /**
- * main - Prints "Programming is like building a multilingual puzzle" using puts command
+ * main - Prints "Programming is like building a multilingual puzzle"
+ *
+ * return 0
  */
 
 int main(void)
