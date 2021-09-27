@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -E MF c $CFILE  
+gcc -E -MF c $CFILE  
