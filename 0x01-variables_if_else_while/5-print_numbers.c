@@ -8,7 +8,7 @@
  */
 int main(void)
 {
-	int n;
+	
 
 
 	printf("0123456789\n");
