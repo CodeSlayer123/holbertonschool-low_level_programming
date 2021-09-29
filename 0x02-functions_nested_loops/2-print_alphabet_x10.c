@@ -7,11 +7,11 @@
 
 void print_alphabet_x10(void)
 {
-	char n;
+	int n;
 
-	for (n = '0'; n <= "10"; ch++)
+	for (n = 0; n <= 10; n++)
 	{
-	print_alphabet(void)
+	  print_alphabet();
 	}
 
 }
