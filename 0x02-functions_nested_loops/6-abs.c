@@ -8,13 +8,13 @@
  */
 
 	int _abs(int);
-{
+	{
 	int n;
 
 	if (n < 0)
 	{
-	n = n - n - n;
+	n = -n;
 	putchar(n);
 	}
 
-}
+	}
