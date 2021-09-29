@@ -1,16 +1,18 @@
 #include "main.h"
 /**
- * print_alphabet - prints alphabet
+ * print_alphabet_x10 - prints alphabet 10 times
  *
  * Return: this is what's supposed to be returned to main
  */
 
-void print_alphabet(void)
+void print_alphabet_x10(void)
 {
 	char ch;
+	for
 
-	for (ch = 'a'; ch <= 'z'; ch++)
-	{
+
+
+	  
 	_putchar(ch);
 	}
 	_putchar('\n');
