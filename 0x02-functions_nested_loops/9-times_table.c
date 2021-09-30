@@ -2,6 +2,9 @@
 /**
  * times_table - prints times table
  *
+ * printCell - prints cell
+ *
+ *
  * Return: this is what's supposed to be returned to main
  */
 
