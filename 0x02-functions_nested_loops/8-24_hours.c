@@ -24,11 +24,11 @@ void jack_bauer(void)
 	int minuteA = minute / 10;
 	int minuteB = minute % 10;
 
-	_putchar(hourA);
-	_putchar(hourB);
+	_putchar('0' + hourA);
+	_putchar('0' + hourB);
 	_putchar(':');
-	_putchar(minuteA);
-	_putchar(minuteB);
+	_putchar('0' + minuteA);
+	_putchar('0' + minuteB);
 	_putchar('\n');
 
 
