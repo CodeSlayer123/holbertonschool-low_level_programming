@@ -13,7 +13,7 @@
 	if (n < 0)
 	{
 	n = -n;
-	putchar(n);
+	_putchar(n);
 	}
 
 	}

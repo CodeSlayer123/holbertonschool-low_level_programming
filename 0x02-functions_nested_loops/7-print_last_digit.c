@@ -15,7 +15,7 @@
 	{
 	lastDigit = -lastDigit;
 	}
-	putchar(lastDigit);
+	_putchar(lastDigit);
 
 	return (lastDigit);
 
