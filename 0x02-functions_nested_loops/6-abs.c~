@@ -2,18 +2,19 @@
 /**
  * _abs - computes absolute value of integer
  *
- * @n: number
+ * @int: number
  *
  * Return: this is what's supposed to be returned to main
  */
 
-	int _abs(int n)
-	{
-
+	int _abs(int);
+{
+	int n;
 	if (n < 0)
 	{
-	n = -n;
+	n = n-n-n;
 	putchar(n);
 	}
 
-	}
+  
+}

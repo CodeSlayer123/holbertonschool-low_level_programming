@@ -2,6 +2,8 @@
 /**
  * _isalpha - checks if c is lower or upper
  *
+ * @c: number
+ *
  * Return: this is what's supposed to be returned to main
  */
 

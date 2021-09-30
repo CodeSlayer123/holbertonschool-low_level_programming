@@ -1,0 +1,22 @@
+#include "main.h"
+/**
+ * print_sign - checks if n is equal, greater to, or less than zero
+ *
+ * @n: number
+ *
+ * Return: this is what's supposed to be returned to main
+ */
+
+	int print_sign(int n)
+{
+
+  if (n < 0)
+    {
+      n = n-n-n;
+      putchar(n);
+    }
+
+	return (0);
+
+
+}
