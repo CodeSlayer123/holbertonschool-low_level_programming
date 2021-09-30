@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdio.h>
+
 /**
  * jack_bauer - prints clock in 24 hour time
  *
@@ -17,28 +17,24 @@ void jack_bauer(void)
 	int minute = 0;
 
 	for (minute = 0; minute < 59; minute++)
-		{
-		if (hour < 10)
-		{
-		printf("0%i:", hour);
-		}
 
-		else
-		{
-
-	printf("%i:", hour);
-	}
-
-	if (minute < 10)
 	{
-	printf("0%i\n", minute);
-	}
-	else
-	{
-	printf("%i\n", minute);
-	}
-	}
-	}
+	int hourA = hour / 10;
+	int hourB = hour % 10;
+	int minuteA = minute / 10;
+	int minuteB = minute % 10;
 
+	_putchar(hourA);
+	_putchar(hourB);
+	_putchar(':');
+	_putchar(minuteA);
+	_putchar(minuteB);
+	_putchar('\n');
+
+
+
+
+	}
+	}
 
 	}
