@@ -23,7 +23,7 @@ else
 	for (outer = 0; outer < size; outer++)
 	{
 
-		for (inner = outer; inner < size; inner++)
+		for (inner = outer; inner < (size - 1); inner++)
 		{
 		_putchar(' ');
 		}
