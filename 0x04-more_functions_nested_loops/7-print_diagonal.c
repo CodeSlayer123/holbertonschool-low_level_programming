@@ -21,15 +21,14 @@ else
 {
 	for (outer = 0; outer < n; outer++)
 	{
-		
-			for (inner = 0; inner < outer; inner++)
-			{
+
+		for (inner = 0; inner < outer; inner++)
+		{
 			_putchar(' ');
-			}
-	
-	_putchar('\\');
-	_putchar('\n');
+		}
+
+		_putchar('\\');
+		_putchar('\n');
 	}
 }
 }
-
