@@ -9,8 +9,8 @@
 
 void print_rev(char *s)
 {
-  if(s)
-    {
+if (s[0] != '\0')
+{
 	while (*s != '\0')
 	{
 		s++;
@@ -27,7 +27,7 @@ void print_rev(char *s)
 			break;
 		}
 
+	}
 }
-    }
 	_putchar('\n');
 }
