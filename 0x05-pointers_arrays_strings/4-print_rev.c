@@ -9,7 +9,8 @@
 
 void print_rev(char *s)
 {
-
+  if(s)
+    {
 	while (*s != '\0')
 	{
 		s++;
@@ -17,15 +18,16 @@ void print_rev(char *s)
 	s--;
 	while (*s >= 0)
 	{
-	  
+
 		_putchar(*s);
-		s--;	
-		
+		s--;
+
 		if (*s == 0)
-		  {
-		    break;
-		  }
-		  
+		{
+			break;
+		}
+
 }
+    }
 	_putchar('\n');
 }
