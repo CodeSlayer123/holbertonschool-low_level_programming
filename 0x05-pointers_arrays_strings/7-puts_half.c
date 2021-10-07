@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * puts_half - prints second half of a string
+ * puts_half - prints second half of string
  *
  * @str: string
  *
@@ -9,27 +9,41 @@
 
 void puts_half(char *str)
 {
-  int a;
+
+  int i;
+  int halfway;
   int length;
-  int even; 
   while (*str != '\0')
     {
-      str++;
       length++;
+      str++;
     }
-  str--;
-  length--;
-   even = length / 2; 
-  while (*str >= 0)
+
+  for (i = length; i<=0;  i--)
     {
       str--;
     }
 
+
+  if (length % 2 == 0)
+    {
+      halfway = length / 2;
+    }
+  else
+    {
+      halfway = (length + 1) / 2;
+    }
   
-  for (a = even; a <= length; a++)
+  for (i = 0; i <= length; i++)
+    {
+      if (i > halfway)
 	{
-	  _putchar(str[a]);
-	  
+	  _putchar(*str);
 	}
-	_putchar('\n');
+      str++;
+    }
+
+  _putchar('\n');
+
+  
 }
