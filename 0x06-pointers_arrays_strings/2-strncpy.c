@@ -1,7 +1,7 @@
 #include "main.h"
 #include "holberton.h"
 /**
- * _strncat - concatenates two strings, limits src to n bytes
+ * _strncpy - copies string
  *
  * @dest: first number
  *
@@ -12,26 +12,25 @@
  * Return: Always 0
  */
 
-char *_strncat(char *dest, char *src, int n)
+char *_strncpy(char *dest, char *src, int n)
 {
 
 	int i = 0;
 	int j = 0;
+	int first = 0;
 
 	while (dest[i] != '\0')
 	{
 		i++;
 	}
-	while (src[j] < src[n])
+	while (j < n)
 	{
-	 
-	 
-	    dest[i] = src[j];
-		i++;
+
+		dest[first] = src[j];
+		first++;
 		j++;
-	    }
-	    
-	
-	
+	}
+
+
 	return (dest);
 }
