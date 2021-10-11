@@ -1,0 +1,40 @@
+#include "main.h"
+/**
+ * _strstr - locates a substring
+ *
+ * @s: string
+ *
+ * @accept: bytes
+ *
+ * Return: Always 0
+ */
+char *_strstr(char *haystack, char *needle)
+{
+  char c;
+  int i;
+  int j;
+  
+  for (i = 0; haystack[i] != '\0'; i++)
+    {
+     for (j = 0; needle[j]; j++)
+       {
+	if (haystack[i] == haystack[j])
+	  {    
+	    c = haystack[i];
+	    break;
+	  }
+       }
+    }
+
+
+  
+   while (*haystack != c)
+     {
+                haystack++;
+        }
+    
+        return (haystack);
+
+	
+
+}
