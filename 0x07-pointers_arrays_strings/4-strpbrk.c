@@ -20,15 +20,9 @@ for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] == s[j])
 		{
-		c = s[j];
-
+		  return (s + i);
 		}
 	}
 }
-	while (*s != c)
-	{
-		s++;
-	}
-
-	return (s);
+	return ('\0');
 }
