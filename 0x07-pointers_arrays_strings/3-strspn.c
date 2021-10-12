@@ -27,7 +27,7 @@ for (i = 0; s[i] != '\0' ||
 
 	for (j = 0; accept[j] != '\0'; j++)
 	{
-		if (s[i] == s[j])
+		if (s[i] == accept[j])
 		{
 		length++;
 		}
