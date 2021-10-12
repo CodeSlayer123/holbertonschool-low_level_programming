@@ -2,39 +2,26 @@
 /**
  * _strstr - locates a substring
  *
- * @s: string
+ * @haystack: string
  *
- * @accept: bytes
+ * @needle: bytes
  *
  * Return: Always 0
  */
 char *_strstr(char *haystack, char *needle)
 {
-  char c;
-  int i;
-  int j;
-  
-  for (i = 0; haystack[i] != '\0'; i++)
-    {
-     for (j = 0; needle[j]; j++)
-       {
+
+	int i;
+	int j = 0;
+
+for (i = 0; haystack[i] != '\0'; i++)
+{
+
 	if (haystack[i] == needle[j])
-	  {    
-	    c = haystack[i];
-	    break;
-	  }
-       }
-    }
-
-
-  
-   while (*haystack != c)
-     {
-                haystack++;
-        }
-    
-        return (haystack);
-
-	
+	{
+		return (haystack + i);
+	}
+}
+	return ('\0');
 
 }
