@@ -16,8 +16,7 @@ unsigned int _strspn(char *s, char *accept)
 	int length = 0;
 
 for (i = 0; s[i] != '\0' &&
-		(s[i  - 1] == ' ' && s[i  - 1] == ',' && s[i  - 1] == '.'
-; i++)
+       s[i  - 1] == ' ' && s[i  - 1] == ',' && s[i  - 1] == '.'; i++)
 {
 
 
