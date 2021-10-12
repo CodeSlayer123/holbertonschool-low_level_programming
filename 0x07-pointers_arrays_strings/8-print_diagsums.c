@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * print_diagsums - prints sum of two diagonals of square
  *
@@ -10,7 +11,7 @@
  */
 void print_diagsums(int *a, int size)
 {
-_putchar(a);
-_putchar(size);
+printf("%i", *a);
 
+ printf("%i", size);
 }
