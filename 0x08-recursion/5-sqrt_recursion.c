@@ -7,28 +7,33 @@
  * Return: returns outcome
  */
 int _sqrt(int n, int tmp);
-
 int _sqrt_recursion(int n)
 {
-	int tmp = 0;
-	int result = _sqrt(n, tmp);
+        int tmp = 1;
+        int result = _sqrt(n, tmp);
 
-	return (result);
+        return (result);
 }
 
 int _sqrt(int n, int tmp)
 {
 
-	tmp = n;
+  if (n < 0)
+    {
+      return (n);
+    }
 
-	if (n * n == tmp)
-	{
-		n = n;
-		return (n);
-	}
+        if (tmp * tmp == n)
+        {
+                return (tmp);
+        }
+        else if (tmp * tmp > n)
+        {
+         return (-1); 
+        }
+        tmp++;
+        _sqrt(n, tmp);
 
-	_sqrt(n / 2, tmp);
-
-	return (n);
+	       
 
 }
