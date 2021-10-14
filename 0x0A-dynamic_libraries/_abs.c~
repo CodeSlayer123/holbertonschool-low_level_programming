@@ -1,0 +1,10 @@
+#include "main.h"
+/**
+ * _abs - file
+ * @n: variable
+ * Return: returns
+ */
+int _abs(char n)
+{
+return (0);
+}
