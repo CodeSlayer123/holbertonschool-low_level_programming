@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 /**
  * _strdup - creates array of chars, initialized with char
  * @str: string
@@ -13,7 +14,7 @@ char *_strdup(char *str)
 	int i;
 	int size;
 
-	size = sizeof(str);
+	size = strlen(str);
 	a = malloc(size * sizeof(char));
 	if (str == NULL)
 	{
