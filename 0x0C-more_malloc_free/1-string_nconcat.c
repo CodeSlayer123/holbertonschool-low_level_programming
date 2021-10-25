@@ -7,27 +7,17 @@
  * @s1: first string
  * @s2: second string
  * @n: number of bytes being conatenated
- * @a: array
  * Return: pointer to allocated memory
  */
-
-char *loop(char *a, char *s1, char *s2, unsigned int n);
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
+	int i, j, size1, size2, number = n;
 	char *a;
-	int size1;
-	int size2;
-	int number = n;
 
 	if (s1 == NULL)
-	{
 		s1 = "";
-	}
 	if (s2 == NULL)
-	{
 		s2 = "";
-	}
 	size1 = strlen(s1);
 	size2 = strlen(s2);
 	if (number < size2)
@@ -39,30 +29,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		return ('\0');
 	}
-	loop(a, s1, s2, n);
-	return (a);
-}
-
-
-/**
- * loop - loops the two strings
- * @a: array
- * @s1: first string
- * @s2: second string
- * @n: number of characters being concatenated
- * Return: array a
-*/
-char *loop(char *a, char *s1, char *s2, unsigned int n)
-{
-	int size2 = strlen(s2);
-	int number = n;
-	int i;
-	int j;
-
 	for (i = 0; s1[i] != '\0' ; i++)
-	{
 		a[i] = s1[i];
-	}
 	if (number >= size2)
 	{
 		for (j = 0; s2[j] != '\0'; j++)
@@ -70,7 +38,6 @@ char *loop(char *a, char *s1, char *s2, unsigned int n)
 			a[i] = s2[j];
 			i++;
 		}
-
 	}
 	else
 	{
@@ -78,12 +45,8 @@ char *loop(char *a, char *s1, char *s2, unsigned int n)
 		{
 			a[i] = s2[j];
 			i++;
-
 		}
 	}
-	if (j == number)
-	{
 		a[i] = '\0';
-	}
 	return (a);
 }
