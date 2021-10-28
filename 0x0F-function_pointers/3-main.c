@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 #include "3-calc.h"
 
 /**
@@ -16,7 +17,7 @@ int main(int argc, char *argv[])
 	int b = atoi(argv[3]);
 	int (*fun)(int, int);
 
-	if (argc == 1)
+	if (argc != 4 || strlen(argv[2]) > 1 || !argv[3])
 	{
 		printf("Error\n");
 		exit(98);
