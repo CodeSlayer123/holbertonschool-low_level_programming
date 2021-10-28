@@ -12,16 +12,17 @@
  */
 int main(int argc, char *argv[])
 {
-	int sum;
-	int a = atoi(argv[1]);
-	int b = atoi(argv[3]);
+	int sum, a, b;
 	int (*fun)(int, int);
-
-	if (argc != 4 || strlen(argv[2]) > 1 || !argv[3])
+	if (argc != 4 || strlen(argv[2]) > 1)
 	{
 		printf("Error\n");
 		exit(98);
 	}
+
+	a = atoi(argv[1]);
+	b = atoi(argv[3]);
+
 	if (*argv[2] != '+' && *argv[2] != '-' && *argv[2] != '*' &&
 		*argv[2] != '/' && *argv[2] != '%')
 	{
