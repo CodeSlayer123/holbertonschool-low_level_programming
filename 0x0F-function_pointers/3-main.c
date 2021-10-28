@@ -5,21 +5,36 @@
 
 /**
  * main - multiplies, adds, subtracts, divide, or find remainder of two numbers
- * @s: first number
+ * @argc: arg count
+ * @argv: arg array
  * Return: sum of a and b
  */
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int sum;
 	int a = atoi(argv[1]);
 	int b = atoi(argv[3]);
+	int (*fun)(int, int);
 
-	if (argc != 4)
+	if (argc == 1)
 	{
 		printf("Error\n");
-		return (1);
+		exit(98);
 	}
-	sum = get_op_func(argv[2]) (a, b));
+	if (*argv[2] != '+' && *argv[2] != '-' && *argv[2] != '*' &&
+		*argv[2] != '/' && *argv[2] != '%')
+	{
+		printf("Error\n");
+		exit(99);
+	}
+	if ((*argv[2] == '/' || *argv[2] == '%') && *argv[3] == '0')
+	{
+		printf("Error\n");
+		exit(100);
+	}
+	fun = (get_op_func(argv[2]));
+
+	sum = fun(a, b);
 	printf("%d\n", sum);
 
 	return (0);
