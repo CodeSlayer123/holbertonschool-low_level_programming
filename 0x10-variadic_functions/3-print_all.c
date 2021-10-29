@@ -5,8 +5,7 @@
 #include "variadic_functions.h"
 /**
  * print_all - prints anything
- * @separator: string to be printed between numbers
- * @format: number of integers passed to function
+ * @format: type of argument passed to function
  * Return: nothing
  */
 
@@ -15,11 +14,11 @@ void print_all(const char * const format, ...)
 	va_list args;
 	int i = 0;
 	int j = 0;
-	char type[] = {'c','i','f','s','\0'};
+	char type[] = {'c', 'i', 'f', 's', '\0'};
 	int n;
 
-	n = sizeof(format);
-	va_start(args, n);
+	n = strlen(format);
+	va_start(args, format);
 	while (i < n)
 	{
 		while (type[j] != '\0')
@@ -39,7 +38,7 @@ void print_all(const char * const format, ...)
 				break;
 
 			case 's':
-	 			printf("%s, ", va_arg(args, const char *));
+				printf("%s, ", va_arg(args, const char *));
 				break;
 
 			}
