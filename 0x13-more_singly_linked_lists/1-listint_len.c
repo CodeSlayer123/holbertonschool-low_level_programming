@@ -9,9 +9,9 @@
  * Return: returns number of nodes
  */
 
-size_t listint_len(const list_t *h)
+size_t listint_len(const listint_t *h)
 {
-	const list_t *tmp = h;
+	const listint_t *tmp = h;
 	int nodes;
 
 	nodes = 0;

@@ -6,7 +6,7 @@
 /**
  * add_nodeint - adds new node at beginning of a list_h list
  * @head: head
- * @str: string
+ * @n: number
  * Return: returns address of the new element, or null if failed
  */
 
