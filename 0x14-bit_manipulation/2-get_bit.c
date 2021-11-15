@@ -15,19 +15,13 @@ char *_strrev(char *str);
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-	int binaryNum[32];
-	int i = 0;
+	int temp = n >> index;
 
-	if (n == '\0' || index == '\0')
+	if (sizeof(n) * 8 < index)
 	{
 		return (-1);
 	}
-	while (n > 0)
-	{
-		binaryNum[i] = n % 2;
-		n = n / 2;
-		i++;
-	}
 
-	return (binaryNum[index]);
+
+	return (temp & 1);
 }
