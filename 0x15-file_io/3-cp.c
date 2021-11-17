@@ -23,21 +23,21 @@ int main(int ac, char **av)
 {
 
 
-	if (ac != 3)
-	{
-		dprintf(1, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
-	if (av[1] == NULL)
-	{
-		dprintf(1, "Error: Can't read from file NAME_OF_THE_FILE\n");
-		exit(98);
-	}
+if (ac != 3)
+{
+	dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
+	exit(97);
+}
+if (av[1] == NULL)
+{
+	dprintf(STDOUT_FILENO, "Error: Can't read from file NAME_OF_THE_FILE\n");
+	exit(98);
+}
 
-	copyContents(av[1], av[2]);
+copyContents(av[1], av[2]);
 
 
-	return (1);
+return (1);
 }
 
 
@@ -50,67 +50,51 @@ int main(int ac, char **av)
 int copyContents(const char *filename1, const char *filename2)
 {
 
-char *buf;
-FILE *fp;
+char *buf[1024];
 int fd;
 int wr;
 int rd;
-int length1;
-char ch;
+int length1 = 1024;
 
-	if (filename1 == NULL || filename2 == NULL)
-		return (-1);
+if (filename1 == NULL || filename2 == NULL)
+	return (-1);
 
-	fp = fopen(filename1, O_RDONLY);
+fd = open(filename1, O_RDONLY);
 
-	while ((ch = fgetc(fp)) != EOF)
-	{
-		length1++;
-	}
+if (fd == -1)
+	return (-1);
 
-	fclose(fp);
+rd = read(fd, buf, length1);
+if (rd == -1)
+{
+	dprintf(STDOUT_FILENO, "Error: Can't read from file NAME_OF_THE_FILE\n");
+	exit(98);
+}
+close(fd);
 
-	fd = open(filename1, O_RDONLY);
+if (fd == '\0')
+{
+	dprintf(STDOUT_FILENO, "Error: Can't close fd FD_VALUE\n");
+	exit(100);
+}
+fd = open(filename2, O_CREAT | O_RDWR | O_TRUNC, 664);
 
-	if (fd == -1)
-		return (-1);
+if (fd == -1)
+	return (0);
 
-	buf = malloc(sizeof(size_t) * length1);
-
-	if (buf == NULL)
-		return (-1);
-
-	rd = read(fd, buf, length1);
-	if (rd == -1)
-	{
-		dprintf(2, "Error: Can't read from file NAME_OF_THE_FILE\n");
-		exit(98);
-	}
-	close(fd);
-	if (fd == '\0')
-	{
-		dprintf(2, "Error: Can't close fd FD_VALUE\n");
-		exit(100);
-	}
-				fd = open(filename2, O_CREAT | O_RDWR | O_TRUNC, 664);
-
-	if (fd == -1)
-		return (0);
-
-	wr = write(fd, buf, length1);
-	if (wr == -1 || fd == -1)
-	{
-		dprintf(2, "Error: Can't write to NAME_OF_THE_FILE\n");
-		exit(99);
-	}
-	close(fd);
-		if (fd == '\0')
-		{
-			dprintf(2, "Error: Can't close fd FD_VALUE\n");
-			exit(100);
-		}
-	free(buf);
-	return (1);
+wr = write(fd, buf, length1);
+if (wr == -1 || fd == -1)
+{
+	dprintf(STDOUT_FILENO, "Error: Can't write to NAME_OF_THE_FILE\n");
+	exit(99);
+}
+close(fd);
+if (fd == '\0')
+{
+	dprintf(STDOUT_FILENO, "Error: Can't close fd FD_VALUE\n");
+	exit(100);
+}
+return (1);
 
 
 }
