@@ -10,10 +10,6 @@
 
 int copyContents(const char *filename1, const char *filename2);
 
-#define NAME_OF_THE_FILE av[1]
-#define file_from av[1]
-#define file_to av[2]
-#define FD_VALUE fd
 /**
  * main - copies contents from one file to another
  * @ac: argument count
@@ -32,14 +28,19 @@ if (ac != 3)
 }
 if (av[1] == NULL)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't read from file NAME_OF_THE_FILE\n");
+	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", av[1]);
 	exit(98);
+}
+if (av[2] == NULL)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+	exit(99);
 }
 
 copyContents(av[1], av[2]);
 
 
-return (1);
+return (0);
 }
 
 
@@ -52,7 +53,7 @@ return (1);
 int copyContents(const char *filename1, const char *filename2)
 {
 
-char *buf[1024];
+char buf[1024];
 int fd;
 int wr;
 int rd;
@@ -79,7 +80,7 @@ if (fd == '\0')
 	dprintf(STDOUT_FILENO, "Error: Can't close fd FD_VALUE\n");
 	exit(100);
 }
-fd = open(filename2, O_CREAT | O_RDWR | O_TRUNC, 664);
+fd = open(filename2, O_CREAT | O_RDWR | O_TRUNC, 0664);
 
 if (fd == -1)
 	return (0);
@@ -93,10 +94,10 @@ if (wr == -1 || fd == -1)
 close(fd);
 if (fd == '\0')
 {
-	dprintf(STDOUT_FILENO, "Error: Can't close fd FD_VALUE\n");
+	dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fd);
 	exit(100);
 }
-return (1);
+return (0);
 
 
 }
