@@ -20,7 +20,6 @@ int copyContents(const char *filename1, const char *filename2);
 int main(int ac, char **av)
 {
 
-
 if (ac != 3)
 {
 	dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
@@ -75,7 +74,7 @@ if (rd == -1)
 }
 close(fd);
 
-if (fd == '\0')
+if (fd == -1)
 {
 	dprintf(STDOUT_FILENO, "Error: Can't close fd FD_VALUE\n");
 	exit(100);
@@ -92,7 +91,7 @@ if (wr == -1 || fd == -1)
 	exit(99);
 }
 close(fd);
-if (fd == '\0')
+if (fd == -1)
 {
 	dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fd);
 	exit(100);
