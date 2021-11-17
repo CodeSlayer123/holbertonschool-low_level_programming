@@ -18,24 +18,28 @@ int create_file(const char *filename, char *text_content)
 {
 	int wr;
 	int length;
+	int fd;
 
 	length = strlen(text_content);
 
 	if (filename == NULL)
 		return (-1);
 
-	wr = open(filename, O_CREAT | O_WRONLY, 0600);
+	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 
-	if (wr == -1)
+	if (fd == -1)
 		return (-1);
 	if (text_content ==  NULL)
 	{
-		write(wr, "", 1);
+		wr = write(fd, "", 1);
 	}
 	else
 	{
-		write(wr, text_content, length);
+		wr = write(fd, text_content, length);
 	}
+	if (wr == -1)
+		return (-1);
+
 	close(wr);
 return (1);
 
