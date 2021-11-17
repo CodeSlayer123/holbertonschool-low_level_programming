@@ -30,8 +30,10 @@ if (av[1] == NULL)
 	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", av[1]);
 	exit(98);
 }
+
 if (av[2] == NULL)
 {
+
 	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 	exit(99);
 }
@@ -57,43 +59,52 @@ int fd;
 int wr;
 int rd;
 int length1 = 1024;
-
-if (filename1 == NULL || filename2 == NULL)
-	return (-1);
+int fTo;
+int closing;
 
 fd = open(filename1, O_RDONLY);
-
+fTo = open(filename2, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 if (fd == -1)
-	return (-1);
+{
+	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", filename1);
+	exit(98);
+}
+
+if (fTo == -1)
+{
+	dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", filename2);
+	exit(99);
+}
+
 
 rd = read(fd, buf, length1);
 if (rd == -1)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't read from file NAME_OF_THE_FILE\n");
+	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", filename1);
 	exit(98);
 }
-close(fd);
 
-if (fd == -1)
+wr = write(fTo, buf, length1);
+
+if (wr == -1)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't close fd FD_VALUE\n");
-	exit(100);
-}
-fd = open(filename2, O_CREAT | O_RDWR | O_TRUNC, 0664);
-
-if (fd == -1)
-	return (0);
-
-wr = write(fd, buf, length1);
-if (wr == -1 || fd == -1)
-{
-	dprintf(STDOUT_FILENO, "Error: Can't write to NAME_OF_THE_FILE\n");
+	dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", filename2);
 	exit(99);
 }
-close(fd);
-if (fd == -1)
+
+closing = close(fd);
+
+if (closing == -1)
 {
 	dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fd);
+	exit(100);
+}
+
+closing = close(fTo);
+
+if (closing == -1)
+{
+	dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fTo);
 	exit(100);
 }
 return (0);
