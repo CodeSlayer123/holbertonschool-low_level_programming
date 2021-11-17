@@ -11,7 +11,9 @@
 int copyContents(const char *filename1, const char *filename2);
 
 #define NAME_OF_THE_FILE av[1]
-
+#define file_from av[1]
+#define file_to av[2]
+#define FD_VALUE fd
 /**
  * main - copies contents from one file to another
  * @ac: argument count
