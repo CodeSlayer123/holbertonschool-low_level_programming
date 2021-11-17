@@ -38,8 +38,8 @@ if (fd == -1)
 rd = read(fd, buf, letters);
 
 
-wr = write(1, buf, rd);
-close(rd);
+wr = write(STDOUT_FILENO, buf, rd);
+close(fd);
 free(buf);
 return (wr);
 
