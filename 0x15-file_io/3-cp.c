@@ -57,10 +57,10 @@ int copyContents(const char *filename1, const char *filename2)
 char buf[1024];
 int fd;
 int wr;
-int rd;
 int length1 = 1024;
 int fTo;
 int closing;
+int nchars;
 
 fd = open(filename1, O_RDONLY);
 fTo = open(filename2, O_CREAT | O_WRONLY | O_TRUNC, 0664);
@@ -75,23 +75,22 @@ if (fTo == -1)
 	dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", filename2);
 	exit(99);
 }
-
-
-rd = read(fd, buf, length1);
-if (rd == -1)
+nchars = 1024;
+while (nchars == 1024)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", filename1);
-	exit(98);
+	nchars = read(fd, buf, length1);
+	if (nchars == -1)
+	{
+		dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", filename1);
+		exit(98);
+	}
+	wr = write(fTo, buf, nchars);
+	if (wr == -1)
+	{
+		dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", filename2);
+		exit(99);
+	}
 }
-
-wr = write(fTo, buf, length1);
-
-if (wr == -1)
-{
-	dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", filename2);
-	exit(99);
-}
-
 closing = close(fd);
 
 if (closing == -1)
