@@ -16,23 +16,27 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-int wr;
-int length;
+	int wr;
+	int length;
 
-length = strlen(text_content);
+	length = strlen(text_content);
 
-if (filename == NULL || text_content == NULL)
-	return (-1);
+	if (filename == NULL)
+		return (-1);
 
+	wr = open(filename, O_CREAT | O_WRONLY, 0600);
 
-wr = open(filename, O_CREAT | O_WRONLY, 0600);
-
-if (wr == -1)
-	return (-1);
-
-write(1, text_content, length);
-
-close(wr);
+	if (wr == -1)
+		return (-1);
+	if (text_content ==  NULL)
+	{
+		write(wr, "", 1);
+	}
+	else
+	{
+		write(wr, text_content, length);
+	}
+	close(wr);
 return (1);
 
 
