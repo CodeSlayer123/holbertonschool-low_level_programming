@@ -23,7 +23,7 @@ int main(int ac, char **av)
 if (ac != 3)
 {
 	dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
-	exit(97);
+		exit(97);
 }
 
 copyContents(av[1], av[2]);
@@ -51,17 +51,17 @@ int closing;
 int nchars;
 
 fd = open(filename1, O_RDONLY);
-fTo = open(filename2, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 if (fd == -1)
 {
 	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", filename1);
-	exit(98);
+		exit(98);
 }
 
+fTo = open(filename2, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 if (fTo == -1)
 {
 	dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", filename2);
-	exit(99);
+		exit(99);
 }
 nchars = 1024;
 while (nchars == 1024)
@@ -70,13 +70,13 @@ while (nchars == 1024)
 	if (nchars == -1)
 	{
 		dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", filename1);
-		exit(98);
+			exit(98);
 	}
 	wr = write(fTo, buf, nchars);
 	if (wr == -1)
 	{
 		dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", filename2);
-		exit(99);
+			exit(99);
 	}
 }
 closing = close(fd);
@@ -84,7 +84,7 @@ closing = close(fd);
 if (closing == -1)
 {
 	dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fd);
-	exit(100);
+		exit(100);
 }
 
 closing = close(fTo);
@@ -92,7 +92,7 @@ closing = close(fTo);
 if (closing == -1)
 {
 	dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fTo);
-	exit(100);
+		exit(100);
 }
 return (0);
 
