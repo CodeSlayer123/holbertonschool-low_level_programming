@@ -25,18 +25,6 @@ if (ac != 3)
 	dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
 	exit(97);
 }
-if (av[1] == NULL)
-{
-	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", av[1]);
-	exit(98);
-}
-
-if (av[2] == NULL)
-{
-
-	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
-	exit(99);
-}
 
 copyContents(av[1], av[2]);
 
