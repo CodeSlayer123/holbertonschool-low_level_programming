@@ -40,7 +40,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 				free(new->key);
 				free(new->value);
 				free(new);
-				break;
+				return (1);
 			}
 			current = current->next;
 		}
