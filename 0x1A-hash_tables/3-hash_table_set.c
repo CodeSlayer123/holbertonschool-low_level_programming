@@ -31,7 +31,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		ht->array[index] = new;
 	else
 	{
-		while (current->next != NULL)
+		while (current != NULL)
 		{
 			if (strcmp(current->key, key) == 0)
 			{
