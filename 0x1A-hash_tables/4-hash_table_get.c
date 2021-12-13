@@ -14,7 +14,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	int size = ht->size;
 	char *value;
 
-	if (key == NULL)
+	if (ht == NULL || key == NULL)
 		return (NULL);
 
 	index = key_index((const unsigned char *)key, size);
@@ -29,7 +29,8 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		{
 			ht->array[index] = ht->array[index]->next;
 		}
+		value = (ht->array[index]->value);
 	}
-	value = (ht->array[index]->value);
+
 	return (value);
 }
