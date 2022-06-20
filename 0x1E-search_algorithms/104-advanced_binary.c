@@ -2,24 +2,23 @@
 
 int advanced_binary(int *array, size_t size, int value){
 
-    int l=0;
-    int r= size -1;
-    int m;
-    int l2, r2;
-    if (array == NULL){
+    return search(array, 0, size - 1, value);
+}
+int search(int arr[], int l, int r, int x){
+    
+    int mid, l2, r2;
+    
+    if (arr == NULL){
         return(-1);
     }
-    while (l <= r){
-
-        m = l + (r - l) / 2;
-
-
+    if (r >= l){
+        mid = l + (r - l) / 2;
         printf("Searching in array:");
         l2 = l;
         r2 = r;
         while (l2 <= r2)
         {
-            printf(" %d", array[l2]);
+            printf(" %d", arr[l2]);
             if (l2 != r2){
                 printf(",");
             }
@@ -27,17 +26,15 @@ int advanced_binary(int *array, size_t size, int value){
         }
         printf("\n");
 
+        if (arr[mid] == x){
+            return mid;
+        }
 
-        if (array[m] < value){
-            l = m + 1;
+        if (arr[mid] > x) {
+            return search(arr, l, mid - 1, x);
         }
-        else if (array[m] > value){
-                r = m - 1;
-            }
-            else {
-                return m;
-        }
+
+        return search(arr, mid + 1, r , x);
     }
-    return -1;
-
+    return (-1);
 }
