@@ -33,11 +33,12 @@ int search(int array[], int left, int right, int val){
             return mid;
         }
 
-        if (array[mid] > val) {
-            return search(array, left, mid - 1, val);
-        }
+        if (array[mid] < val)
+            return (search(array, mid + 1, right, val));
 
-        return search(array, mid + 1, right , val);
+        return (search(array, left, mid, val));
+
+        
     }
     return (-1);
 }
