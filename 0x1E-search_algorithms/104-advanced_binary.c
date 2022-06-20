@@ -27,10 +27,24 @@ int search(int array[], int left, int right, int val){
         printf("\n");
 
         if (array[mid] == val){
-            if (array[mid - 1] == val) {
+            /*if (array[mid - 1] == val) {
                 return search(array, left, mid, val);
             }
             return mid;
+            */
+            if (array[mid - 1] == val) {
+                return search(array, left, mid, val);
+            }
+            if (right - left < 2)
+            {
+                if (array[left] == val) {
+                    return left;
+                }
+                if (left == right) {
+                    return -1;
+                }
+                return search(array, left +1, right, val);
+            }
         }
 
         if (array[mid] > val) {
