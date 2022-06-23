@@ -7,7 +7,7 @@
  * @r1: right 1, rightmost of the array
  * Return: this function until it returns the mid number
  */
-int search(int *array, int l1, int r1, int val)
+int binary_search(int *array, int l1, int r1, int val)
 {
 
     int mid, l2, r2;
