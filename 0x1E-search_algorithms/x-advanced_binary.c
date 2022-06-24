@@ -1,7 +1,7 @@
 #include "search_algos.h"
 
 /**
- * search - the actual recursive algorithm
+ * binary_search - the actual recursive algorithm
  * @array: the array passed from the called function
  * @l1: left 1, starting from the left of the array
  * @r1: right 1, rightmost of the array
@@ -38,17 +38,17 @@ int binary_search(int *array, int l1, int r1, int val)
         {
             if (array[mid - 1] == val)
             {
-                return search(array, l1, mid, val);
+                return (binary_search(array, l1, mid, val));
             }
             return mid;
         }
 
         if (array[mid] < val)
         {
-            return (search(array, mid + 1, r1, val));
+            return (binary_search(array, mid + 1, r1, val));
         }
 
-        return (search(array, l1, mid, val));
+        return (binary_search(array, l1, mid, val));
     }
     return (-1);
 }
@@ -67,5 +67,5 @@ int advanced_binary(int *array, size_t size, int value)
         return (-1);
     }
 
-    return search(array, 0, size - 1, value);
+    return binary_search(array, 0, size - 1, value);
 }
