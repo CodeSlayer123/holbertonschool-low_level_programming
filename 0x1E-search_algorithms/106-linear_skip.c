@@ -1,12 +1,16 @@
 #include "search_algos.h"
 
 skiplist_t *linear_skip(skiplist_t *list, int value){
-    skiplist_t *prev = list;
-    skiplist_t *tmp = list->express;
+    skiplist_t *prev;
+    skiplist_t *tmp;
 
     if (list == NULL) {
         return NULL;
     }
+
+    prev = list;
+    tmp = list->express;
+
     while (tmp != NULL){
         /*
         if (tmp->n == value){
